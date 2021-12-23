@@ -1,7 +1,7 @@
 <?php
+session_start();
+
 // POSTデータ確認
-//var_dump($_POST);
-//exit();
 
 if (
     !isset($_POST['user_name']) || $_POST['user_name'] == '' ||
@@ -15,7 +15,7 @@ if (
     exit('ParamError');
 }
 
-$user_name = $_POST['user_name'];
+$user_id = $_POST['id'];
 $exam_type = $_POST['exam_type'];
 $exam_date = $_POST['exam_date'];
 $japanese = $_POST['japanese'];
