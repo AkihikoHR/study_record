@@ -6,7 +6,7 @@ $user_name = $_SESSION['user_name'];
 if (isset($_SESSION['id'])) { //ログインしているとき
   $msg = 'こんにちは' . $user_name . 'さん';
   $edit = '<a href="user_edit.php">ユーザー情報変更</a>';
-  $link_record = '<a href="record_input.php">成績の記録</a>';
+  $link_record = 'record_input.php';
   $link = '<a href="logout.php">ログアウト</a>';
 } else {
   $msg = 'ログインしていません';
@@ -34,7 +34,7 @@ if (isset($_SESSION['id'])) { //ログインしているとき
   <button> 担任からのメッセージ </button>
   <button> 今日の１題 </button>
   <button> 学習時間の記録 </button>
-  <?php echo $link_record; ?>
+  <button onclick="location.href='<?php echo $link_record; ?>'">成績の記録</button>
 
   <div> <?php echo $edit; ?></div>
   <div> <?php echo $link; ?></div>

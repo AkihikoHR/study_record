@@ -5,8 +5,8 @@ $id = $_SESSION['id'];
 $user_name = $_SESSION['user_name'];
 
 if (isset($_SESSION['id'])) { //ログインしているとき
-  $msg = $user_name . 'さんの成績表';
-  $link = '<a href="top.php">ホーム画面へ</a>';
+  $msg = $user_name . 'さんの成績を入力してください';
+  $link = '<a href="top.php">ホームへ</a>';
 } else {
   $msg = 'ログインしていません';
   $link = '<a href="login_input.php">ログイン</a>';
@@ -28,7 +28,7 @@ if (isset($_SESSION['id'])) { //ログインしているとき
   <form action="record_create.php" method="POST">
     <fieldset>
       <legend>成績管理（入力画面）</legend>
-      <a href="record_read.php">一覧画面</a>
+      <a href="record_read.php">過去の成績はこちら</a>
       <div>
         試験の種類: <input type="text" name="exam_type">
       </div>
@@ -51,7 +51,7 @@ if (isset($_SESSION['id'])) { //ログインしているとき
         社会: <input type="number" name="social">
       </div>
       <div>
-        <input type="hidden" name="id" value="<?= $id ?>">
+        <input type="hidden" name="user_id" value="<?= $id ?>">
       </div>
       <div>
         <button>送信</button>

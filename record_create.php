@@ -4,7 +4,7 @@ session_start();
 // POSTデータ確認
 
 if (
-    !isset($_POST['user_name']) || $_POST['user_name'] == '' ||
+    !isset($_POST['user_id']) || $_POST['user_id'] == '' ||
     !isset($_POST['exam_type']) || $_POST['exam_type'] == '' ||
     !isset($_POST['exam_date']) || $_POST['exam_date'] == '' ||
     !isset($_POST['japanese']) || $_POST['japanese'] == '' ||
@@ -15,7 +15,7 @@ if (
     exit('ParamError');
 }
 
-$user_id = $_POST['id'];
+$user_id = $_POST['user_id'];
 $exam_type = $_POST['exam_type'];
 $exam_date = $_POST['exam_date'];
 $japanese = $_POST['japanese'];
@@ -25,30 +25,19 @@ $science = $_POST['science'];
 $social = $_POST['social'];
 
 // DB接続
-
-// 各種項目設定
-$dbn = 'mysql:dbname=gsacy_d01_11_product;charset=utf8mb4;port=3306;host=localhost';
-$user = 'root';
-$pwd = '';
-
-// DB接続
-try {
-    $pdo = new PDO($dbn, $user, $pwd);
-} catch (PDOException $e) {
-    echo json_encode(["db error" => "{$e->getMessage()}"]);
-    exit();
-};
+include('functions.php');
+$pdo = connect_to_db();
 
 // SQL作成&実行
 
 $sql = 'INSERT INTO record_table
- (id, user_name, exam_type, exam_date, japanese, math, english, science, social, created_at, updated_at) values 
- (NULL, :user_name, :exam_type, :exam_date, :japanese, :math, :english, :science, :social, now(), now())';
+ (id, user_id, exam_type, exam_date, japanese, math, english, science, social, created_at, updated_at) values 
+ (NULL, :user_id, :exam_type, :exam_date, :japanese, :math, :english, :science, :social, now(), now())';
 
 $stmt = $pdo->prepare($sql);
 
 // バインド変数を設定
-$stmt->bindValue(':user_name', $user_name, PDO::PARAM_STR);
+$stmt->bindValue(':user_id', $user_id, PDO::PARAM_STR);
 $stmt->bindValue(':exam_type', $exam_type, PDO::PARAM_STR);
 $stmt->bindValue(':exam_date', $exam_date, PDO::PARAM_STR);
 $stmt->bindValue(':japanese', $japanese, PDO::PARAM_STR);

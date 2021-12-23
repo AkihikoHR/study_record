@@ -1,22 +1,17 @@
 <?php
 
-// DB接続
-$dbn = 'mysql:dbname=gsacy_d01_11_product;charset=utf8mb4;port=3306;host=localhost';
-$user = 'root';
-$pwd = '';
+session_start();
+$user_id = $_SESSION['id'];
+$user_name = $_SESSION['user_name'];
 
 // DB接続
-try {
-  $pdo = new PDO($dbn, $user, $pwd);
-} catch (PDOException $e) {
-  echo json_encode(["db error" => "{$e->getMessage()}"]);
-  exit();
-};
+include('functions.php');
+$pdo = connect_to_db();
 
 // SQL作成&実行
-$sql = 'SELECT * FROM record_table WHERE user_name="弘中明彦"';
-
+$sql = 'SELECT * FROM record_table WHERE user_id=:user_id';
 $stmt = $pdo->prepare($sql);
+$stmt->bindValue(':user_id', $user_id);
 
 // SQL実行（実行に失敗すると `sql error ...` が出力される）
 try {
@@ -58,13 +53,7 @@ foreach ($result as $record) {
   <fieldset>
     <legend>成績管理（過去の成績一覧）</legend>
     <a href="record_input.php">入力画面</a>
-
-    <form method="POST">
-      氏名: <input type="text" name="user_name">
-    </form>
-
-    <button id="result">一覧表示</button>
-    <table id="list" class="none">
+    <table>
       <thead>
         <tr>
           <th>試験の種類</th>
@@ -77,18 +66,12 @@ foreach ($result as $record) {
         </tr>
       </thead>
       <tbody>
-        <!-- ここに<tr><td>deadline</td><td>todo</td><tr>の形でデータが入る -->
+        <!-- ここにDBから取得したデータが入る -->
         <?= $output ?>
       </tbody>
     </table>
   </fieldset>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script>
-    $("#result").on("click", function() {
-      $("#list").removeClass("none");
-    });
-  </script>
 </body>
 
 </html>
