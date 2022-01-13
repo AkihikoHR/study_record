@@ -1,7 +1,5 @@
 <?php
-// POSTデータ確認
-//var_dump($_POST);
-//exit();
+include('functions.php');
 
 if (
     !isset($_POST['user_name']) || $_POST['user_name'] == '' ||
@@ -22,16 +20,12 @@ $user_email = $_POST['user_email'];
 $user_address = $_POST['user_address'];
 
 // DB接続
-
-include('functions.php');
 $pdo = connect_to_db();
-
-// SQL作成&実行
 
 //メールアドレス重複チェック
 $sql = 'SELECT COUNT(*) FROM user_table WHERE user_email = :user_email';
 $stmt = $pdo->prepare($sql);
-$stmt->bindValue(':user_email', $user_email);
+$stmt->bindValue(':user_email', $user_email, PDO::PARAM_STR);
 $stmt->execute([':user_email' => $user_email]);
 
 if ($stmt->fetchColumn()) {
@@ -66,6 +60,20 @@ if ($stmt->fetchColumn()) {
 }
 ?>
 
-<!--メッセージとリンクの出力-->
-<h1><?php echo $msg; ?></h1>
-<?php echo $link; ?>
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新規ユーザー登録</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1><?php echo $msg; ?></h1>
+    <?php echo $link; ?>
+</body>
+
+</html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2021-12-23 15:28:58
+-- 生成日時: 2022-01-13 15:48:26
 -- サーバのバージョン： 10.4.22-MariaDB
 -- PHP のバージョン: 8.0.13
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `record_table` (
   `id` int(11) NOT NULL,
-  `user_name` varchar(128) COLLATE utf8mb4_bin NOT NULL,
+  `user_id` int(11) NOT NULL,
   `exam_type` varchar(128) COLLATE utf8mb4_bin NOT NULL,
   `exam_date` date NOT NULL,
   `japanese` int(11) NOT NULL,
@@ -45,13 +45,18 @@ CREATE TABLE `record_table` (
 -- テーブルのデータのダンプ `record_table`
 --
 
-INSERT INTO `record_table` (`id`, `user_name`, `exam_type`, `exam_date`, `japanese`, `math`, `english`, `science`, `social`, `created_at`, `updated_at`) VALUES
-(1, '弘中明彦', '１学期期末', '2021-12-16', 100, 100, 100, 100, 100, '2021-12-16 20:24:34', '2021-12-16 20:24:34'),
-(2, '弘中テスト', '２学期中間', '2021-12-12', 50, 50, 50, 50, 50, '2021-12-16 21:28:22', '2021-12-16 21:28:22'),
-(3, '弘中明彦', '学年末', '2021-12-30', 80, 80, 80, 80, 80, '2021-12-16 21:28:53', '2021-12-16 21:28:53'),
-(4, '弘中明彦', '１学期中間', '2021-10-01', 70, 70, 70, 70, 70, '2021-12-16 22:03:52', '2021-12-16 22:03:52'),
-(5, '弘中明彦', '3学期中間', '2021-12-05', 50, 50, 50, 50, 50, '2021-12-16 23:06:00', '2021-12-16 23:06:00'),
-(6, '弘中明彦', '模擬試験', '2021-09-17', 80, 80, 80, 80, 80, '2021-12-16 23:06:38', '2021-12-16 23:06:38');
+INSERT INTO `record_table` (`id`, `user_id`, `exam_type`, `exam_date`, `japanese`, `math`, `english`, `science`, `social`, `created_at`, `updated_at`) VALUES
+(1, 0, '１学期期末', '2021-12-16', 100, 100, 100, 100, 100, '2021-12-16 20:24:34', '2021-12-16 20:24:34'),
+(2, 0, '２学期中間', '2021-12-12', 50, 50, 50, 50, 50, '2021-12-16 21:28:22', '2021-12-16 21:28:22'),
+(3, 0, '学年末', '2021-12-30', 80, 80, 80, 80, 80, '2021-12-16 21:28:53', '2021-12-16 21:28:53'),
+(4, 0, '１学期中間', '2021-10-01', 70, 70, 70, 70, 70, '2021-12-16 22:03:52', '2021-12-16 22:03:52'),
+(5, 0, '3学期中間', '2021-12-05', 50, 50, 50, 50, 50, '2021-12-16 23:06:00', '2021-12-16 23:06:00'),
+(6, 0, '模擬試験', '2021-09-17', 80, 80, 80, 80, 80, '2021-12-16 23:06:38', '2021-12-16 23:06:38'),
+(7, 10, '１学期期末', '2021-12-24', 80, 80, 80, 80, 80, '2021-12-24 00:50:19', '2021-12-24 00:50:19'),
+(8, 10, '２学期中間', '2021-12-21', 90, 90, 90, 90, 90, '2021-12-24 00:50:48', '2021-12-24 00:50:48'),
+(9, 11, '１学期期末', '2022-01-04', 80, 80, 80, 80, 80, '2022-01-08 01:28:02', '2022-01-08 01:28:02'),
+(10, 11, '１学期期末', '2022-01-05', 80, 80, 80, 80, 80, '2022-01-08 01:30:49', '2022-01-08 01:30:49'),
+(11, 12, '学年末', '2022-01-13', 80, 80, 80, 80, 80, '2022-01-13 23:31:40', '2022-01-13 23:31:40');
 
 -- --------------------------------------------------------
 
@@ -78,15 +83,12 @@ CREATE TABLE `user_table` (
 --
 
 INSERT INTO `user_table` (`id`, `user_name`, `user_ruby`, `user_pw`, `user_age`, `user_email`, `user_address`, `is_admin`, `is_deleted`, `created_at`, `updated_at`) VALUES
-(1, '弘中明彦', 'ひろなかあきひこ', 'password', 33, 'test@example.com', 'テスト', 0, 0, '2021-12-22 00:44:07', '2021-12-22 00:44:07'),
-(2, '弘中テスト', 'ひろなか２', 'password', 30, 'test2@example.com', 'テスト2', 0, 0, '2021-12-22 01:45:50', '2021-12-22 01:45:50'),
-(3, '弘中明彦', 'ひろなか', 'password', 30, 'test3@example.com', '住所テスト', 0, 0, '2021-12-22 22:42:12', '2021-12-22 22:42:12'),
-(4, 'あああ', 'あああ', 'password', 18, 'test4@example.com', 'テスト', 0, 0, '2021-12-22 22:46:34', '2021-12-22 22:46:34'),
-(6, '弘中テスト', 'ひろなか', 'pass', 20, 'test5@example.com', 'テスト', 0, 0, '2021-12-22 23:13:16', '2021-12-22 23:13:16'),
 (7, 'aaa', 'aaa', 'pass', 3, 'test6@example.com', 'aaa', 0, 0, '2021-12-22 23:21:32', '2021-12-22 23:21:32'),
 (8, '弘中明彦', 'ひろなかあきひこ', '$2y$10$2Ua9HVLwfShAcA2WiKBKWe07RxK5I1/QNS.ObH.9y6uczIAQrKu22', 18, 'test8@example.com', 'テスト8', 0, 0, '2021-12-23 03:33:05', '2021-12-23 22:55:51'),
 (9, '弘中更新２', '', '$2y$10$vlm2INnaMWyt.1QVKVyqJeY3SqrDU5UAQYPQtn0mf7lOCXp7QZhAa', 0, '', '', 0, 0, '2021-12-23 04:05:49', '2021-12-23 22:32:40'),
-(10, '弘中テスト10', 'ひろなかてすと10', '$2y$10$DFf55DUuhtzWvXJILDM3N.NuZk6VMzGtjoxAuCm4yAV19I6QZV/mu', 30, 'test10@example.com', 'テスト10', 0, 0, '2021-12-23 22:56:47', '2021-12-23 22:56:47');
+(10, '弘中テスト10', 'ひろなかてすと10', '$2y$10$DFf55DUuhtzWvXJILDM3N.NuZk6VMzGtjoxAuCm4yAV19I6QZV/mu', 30, 'test10@example.com', 'テスト10', 0, 0, '2021-12-23 22:56:47', '2021-12-23 23:49:13'),
+(11, '弘中更新', 'テスト', '$2y$10$q.o.DUVxYSGNNsaYLjIpzufC94HUsb7TZP5d1JSSqlsUDhoj2mSRi', 18, 'test@example.com', 'aaa', 0, 0, '2022-01-08 00:49:53', '2022-01-08 01:14:35'),
+(12, '弘中テスト', 'aaa', '$2y$10$PSo.pIAsmCoFvIICEdctKeUHUN6dojdiPRZ.fiwrMSGfY0YRxpvbi', 18, 'test2@example.com', 'aaa', 0, 0, '2022-01-13 22:27:37', '2022-01-13 23:17:34');
 
 --
 -- ダンプしたテーブルのインデックス
@@ -112,13 +114,13 @@ ALTER TABLE `user_table`
 -- テーブルの AUTO_INCREMENT `record_table`
 --
 ALTER TABLE `record_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- テーブルの AUTO_INCREMENT `user_table`
 --
 ALTER TABLE `user_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

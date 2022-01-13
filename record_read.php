@@ -1,11 +1,12 @@
 <?php
-
 session_start();
-$user_id = $_SESSION['id'];
+include('functions.php');
+check_session_id();
+
+$user_id = $_SESSION['user_id'];
 $user_name = $_SESSION['user_name'];
 
 // DB接続
-include('functions.php');
 $pdo = connect_to_db();
 
 // SQL作成&実行
@@ -52,7 +53,7 @@ foreach ($result as $record) {
 <body>
   <fieldset>
     <legend>成績管理（過去の成績一覧）</legend>
-    <a href="record_input.php">入力画面</a>
+    <h1><?php echo $user_name; ?>さんの成績表</h1>
     <table>
       <thead>
         <tr>
@@ -66,10 +67,10 @@ foreach ($result as $record) {
         </tr>
       </thead>
       <tbody>
-        <!-- ここにDBから取得したデータが入る -->
         <?= $output ?>
       </tbody>
     </table>
+    <a href="record_input.php">入力画面に戻る</a>
   </fieldset>
 
 </body>

@@ -1,21 +1,25 @@
 <?php
 session_start();
+include('functions.php');
+check_session_id();
+
+$user_id = $_SESSION['user_id'];
+$user_name = $_SESSION['user_name'];
 
 // POSTデータ確認
 
 if (
-    !isset($_POST['user_id']) || $_POST['user_id'] == '' ||
     !isset($_POST['exam_type']) || $_POST['exam_type'] == '' ||
     !isset($_POST['exam_date']) || $_POST['exam_date'] == '' ||
     !isset($_POST['japanese']) || $_POST['japanese'] == '' ||
     !isset($_POST['math']) || $_POST['math'] == '' ||
+    !isset($_POST['english']) || $_POST['english'] == '' ||
     !isset($_POST['science']) || $_POST['science'] == '' ||
     !isset($_POST['social']) || $_POST['social'] == ''
 ) {
     exit('ParamError');
 }
 
-$user_id = $_POST['user_id'];
 $exam_type = $_POST['exam_type'];
 $exam_date = $_POST['exam_date'];
 $japanese = $_POST['japanese'];
@@ -25,7 +29,6 @@ $science = $_POST['science'];
 $social = $_POST['social'];
 
 // DB接続
-include('functions.php');
 $pdo = connect_to_db();
 
 // SQL作成&実行

@@ -1,12 +1,25 @@
 <?php
-
 session_start();
-$id = $_SESSION['id'];
-$user_name = $_SESSION['user_name'];
-$user_ruby = $_SESSION['user_ruby'];
-$user_age = $_SESSION['user_age'];
-$user_email = $_SESSION['user_email'];
-$user_address = $_SESSION['user_address'];
+include('functions.php');
+check_session_id();
+
+$user_id = $_SESSION['user_id'];
+
+// DB接続
+$pdo = connect_to_db();
+
+// SQL作成&実行
+$sql = 'SELECT * FROM user_table WHERE id = :user_id';
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(':user_id', $user_id);
+$stmt->execute();
+$member = $stmt->fetch();
+
+$user_name = $member['user_name'];
+$user_ruby = $member['user_ruby'];
+$user_age = $member['user_age'];
+$user_email = $member['user_email'];
+$user_address = $member['user_address'];
 
 ?>
 
@@ -17,6 +30,7 @@ $user_address = $_SESSION['user_address'];
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ユーザー情報変更</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -52,9 +66,6 @@ $user_address = $_SESSION['user_address'];
       </div>
       <div>
         変更後の住所<input type="text" name="user_address" value="<?php echo $user_address; ?>">
-      </div>
-      <div>
-        <input type="hidden" name="id" value="<?= $id ?>">
       </div>
       <input type="submit" value="ユーザー情報更新">
     </fieldset>
