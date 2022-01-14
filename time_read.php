@@ -10,7 +10,7 @@ $user_name = $_SESSION['user_name'];
 $pdo = connect_to_db();
 
 // SQL作成&実行
-$sql = 'SELECT * FROM record_table WHERE user_id=:user_id';
+$sql = 'SELECT * FROM time_table WHERE user_id=:user_id';
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':user_id', $user_id);
 
@@ -27,8 +27,7 @@ $output = "";
 foreach ($result as $record) {
   $output .= "
   <tr>
-    <td>{$record["exam_type"]}</td>
-    <td>{$record["exam_date"]}</td>
+    <td>{$record["date"]}</td>
     <td>{$record["japanese"]}</td>
     <td>{$record["math"]}</td>
     <td>{$record["english"]}</td>
@@ -39,8 +38,8 @@ foreach ($result as $record) {
 }
 
 // SQL作成&実行
-$sql = 'SELECT ROUND(AVG(japanese),1), ROUND(AVG(math),1), ROUND(AVG(english),1),
- ROUND(AVG(science),1), ROUND(AVG(social),1) FROM record_table WHERE user_id=:user_id';
+$sql = 'SELECT SUM(japanese), SUM(math), SUM(english),
+ SUM(science), SUM(social) FROM time_table WHERE user_id=:user_id';
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':user_id', $user_id);
 
@@ -53,18 +52,18 @@ try {
 }
 
 $result = $stmt->fetch(PDO::FETCH_ASSOC);
-$average = "";
-$average .= "
+$total = "";
+$total .= "
   <tr>
-    <td>平均</td>
-    <td></td>
-    <td>{$result["ROUND(AVG(japanese),1)"]}</td>
-    <td>{$result["ROUND(AVG(math),1)"]}</td>
-    <td>{$result["ROUND(AVG(english),1)"]}</td>
-    <td>{$result["ROUND(AVG(science),1)"]}</td>
-    <td>{$result["ROUND(AVG(social),1)"]}</td>   
+    <td>合計</td>
+    <td>{$result["SUM(japanese)"]}</td>
+    <td>{$result["SUM(math)"]}</td>
+    <td>{$result["SUM(english)"]}</td>
+    <td>{$result["SUM(science)"]}</td>
+    <td>{$result["SUM(social)"]}</td>   
   </tr>
   ";
+
 
 ?>
 
@@ -74,7 +73,7 @@ $average .= "
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>成績管理（過去の成績一覧）</title>
+  <title>学習時間管理</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -82,13 +81,12 @@ $average .= "
   <div class="wrapper">
 
     <fieldset>
-      <legend>成績管理（過去の成績一覧）</legend>
-      <h1><?php echo $user_name; ?>さんの成績表</h1>
+      <legend>学習時間管理</legend>
+      <h1><?php echo $user_name; ?>さんの学習時間</h1>
       <table>
         <thead>
           <tr>
-            <th>試験の種類</th>
-            <th>試験日</th>
+            <th>日付</th>
             <th>国語</th>
             <th>数学</th>
             <th>英語</th>
@@ -100,11 +98,12 @@ $average .= "
           <?= $output ?>
         </tbody>
         <tbody>
-          <?= $average ?>
+          <?= $total ?>
         </tbody>
       </table>
-      <a href="record_input.php">入力画面に戻る</a>
+      <a href="time_input.php">入力画面に戻る</a>
     </fieldset>
+
   </div>
 </body>
 

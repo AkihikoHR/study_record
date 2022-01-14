@@ -9,32 +9,33 @@
 </head>
 
 <body>
-  <form action="user_resist.php" method="POST">
-    <fieldset>
-      <legend>新規ユーザー登録</legend>
-      <div>
-        氏名: <input type="text" name="user_name" required>
-      </div>
-      <div>
-        よみがな: <input type="text" name="user_ruby" required>
-      </div>
-      <div>
-        password: <input type="password" name="user_pw" required>
-      </div>
-      <div>
-        年齢: <input type="number" name="user_age" required>
-      </div>
-      <div>
-        email: <input type="email" name="user_email" required>
-      </div>
-      <div>
-        住所: <input type="text" name="user_address" required>
-      </div>
-      <input type="submit" value="新規登録">
-    </fieldset>
-  </form>
-  <p>すでに登録済みの方は<a href="login_input.php">こちら</a></p>
-
+  <div class="wrapper">
+    <form action="user_resist.php" method="POST">
+      <fieldset>
+        <legend>新規ユーザー登録</legend>
+        <div>
+          氏名: <input type="text" name="user_name" required>
+        </div>
+        <div>
+          よみがな: <input type="text" name="user_ruby" required>
+        </div>
+        <div>
+          password: <input type="password" name="user_pw" required>
+        </div>
+        <div>
+          年齢: <input type="number" name="user_age" required>
+        </div>
+        <div>
+          email: <input type="email" name="user_email" required>
+        </div>
+        <div>
+          住所: <input type="text" name="user_address" required>
+        </div>
+        <input type="submit" value="新規登録">
+      </fieldset>
+    </form>
+    <p>すでに登録済みの方は<a href="login_input.php">こちら</a></p>
+  </div>
 </body>
 
 </html>

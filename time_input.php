@@ -14,43 +14,40 @@ $user_name = $_SESSION['user_name'];
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>成績管理（入力画面）</title>
+  <title>時間管理（入力画面）</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <div class="wrapper">
 
-    <h1><?php echo $user_name; ?>さんの成績を入力してください</h1>
+    <h1><?php echo $user_name; ?>さんの学習時間を入力してください</h1>
 
-    <form action="record_create.php" method="POST">
+    <form action="time_create.php" method="POST">
       <fieldset>
-        <legend>成績管理（入力画面）</legend>
+        <legend>学習時間管理（入力画面）</legend>
         <div>
-          試験の種類: <input type="text" name="exam_type">
+          日付: <input type="date" name="date">
         </div>
         <div>
-          試験日: <input type="date" name="exam_date">
+          国語: <input type="number" name="japanese">分
         </div>
         <div>
-          国語: <input type="number" name="japanese">
+          数学: <input type="number" name="math">分
         </div>
         <div>
-          数学: <input type="number" name="math">
+          英語: <input type="number" name="english">分
         </div>
         <div>
-          英語: <input type="number" name="english">
+          理科: <input type="number" name="science">分
         </div>
         <div>
-          理科: <input type="number" name="science">
-        </div>
-        <div>
-          社会: <input type="number" name="social">
+          社会: <input type="number" name="social">分
         </div>
         <div>
           <button>保存</button>
         </div>
-        <a href="record_read.php">過去の成績はこちら</a>
+        <a href="time_read.php">これまでの学習時間はこちら</a>
       </fieldset>
     </form>
 

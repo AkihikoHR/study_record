@@ -23,8 +23,8 @@ if (password_verify($_POST['user_pw'], $member['user_pw'])) {
   $_SESSION['user_id'] = $member['id'];
   $_SESSION['user_name'] = $member['user_name'];
 
-  $msg = 'ログインしました。';
-  $link = '<a href="top.php">ホーム</a>';
+  header('LOCATION:top.php');
+  exit();
 } else {
   $msg = 'ログイン情報に誤りがあります';
   $link = '<a href="login_input.php">戻る</a>';
@@ -42,8 +42,12 @@ if (password_verify($_POST['user_pw'], $member['user_pw'])) {
 </head>
 
 <body>
-  <h1><?php echo $msg; ?></h1>
-  <?php echo $link; ?>
+
+  <div class="wrapper">
+    <h1><?php echo $msg; ?></h1>
+    <?php echo $link; ?>
+  </div>
+
 </body>
 
 </head>

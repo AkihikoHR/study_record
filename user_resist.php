@@ -72,8 +72,10 @@ if ($stmt->fetchColumn()) {
 </head>
 
 <body>
-    <h1><?php echo $msg; ?></h1>
-    <?php echo $link; ?>
+    <div class="wrapper">
+        <h1><?php echo $msg; ?></h1>
+        <?php echo $link; ?>
+    </div>
 </body>
 
 </html>
