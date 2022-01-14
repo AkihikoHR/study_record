@@ -30,7 +30,7 @@ $user_address = $member['user_address'];
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ユーザー情報変更</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -71,6 +71,7 @@ $user_address = $member['user_address'];
         <input type="submit" value="ユーザー情報更新">
       </fieldset>
     </form>
+    <div><a href="top.php">ホームへ</a></div>
   </div>
 
 </body>

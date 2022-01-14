@@ -15,7 +15,7 @@ $user_name = $_SESSION['user_name'];
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>時間管理（入力画面）</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -47,9 +47,12 @@ $user_name = $_SESSION['user_name'];
         <div>
           <button>保存</button>
         </div>
-        <a href="time_read.php">これまでの学習時間はこちら</a>
       </fieldset>
     </form>
+
+    <div class="btn_area">
+      <button class="btn" onclick="location.href='time_read.php'">学習時間レポートはこちら</button>
+    </div>
 
     <div><a href="top.php">ホームへ</a></div>
   </div>

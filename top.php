@@ -14,7 +14,7 @@ $user_name = $_SESSION['user_name'];
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
   <title>ホーム画面</title>
 </head>
 
@@ -25,15 +25,25 @@ $user_name = $_SESSION['user_name'];
 
     <h2>今日は何をしますか？</h2>
 
-    <button> 担任からのメッセージ </button>
-    <button> 今日の１題 </button>
-    <button onclick="location.href='time_input.php'"> 学習時間の記録 </button>
-    <button onclick="location.href='record_input.php'">成績の記録</button>
+    <div class="btn_area">
+      <button class="btn" onclick="location.href='message.php'"> 担任からのメッセージ </button>
+      <button class="btn" onclick="location.href='time_input.php'"> 学習時間の記録 </button>
+      <button class="btn" onclick="location.href='record_input.php'">成績の記録</button>
+    </div>
 
-    <div><a href="user_edit.php">ユーザー情報変更</a></div>
-    <div><a href="logout.php">ログアウト</a></div>
+    <div class="footer_area">
+      <div><a href="user_edit.php">ユーザー情報変更</a></div>
+      <div><a href="logout.php">ログアウト</a></div>
+    </div>
+
 
   </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <script>
+  </script>
+
 </body>
 
 </html>

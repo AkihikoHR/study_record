@@ -15,7 +15,7 @@ $user_name = $_SESSION['user_name'];
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>成績管理（入力画面）</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -50,9 +50,13 @@ $user_name = $_SESSION['user_name'];
         <div>
           <button>保存</button>
         </div>
-        <a href="record_read.php">過去の成績はこちら</a>
+
       </fieldset>
     </form>
+
+    <div class="btn_area">
+      <button class="btn" onclick="location.href='record_read.php'">成績レポートはこちら</button>
+    </div>
 
     <div><a href="top.php">ホームへ</a></div>
   </div>

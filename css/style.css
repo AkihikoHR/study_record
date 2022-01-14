@@ -1,0 +1,55 @@
+body{
+	font-family: Roboto, "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+	font-size: 16px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.wrapper{
+    padding: 40px 20px 40px;
+    background-color: antiquewhite;
+    text-align: center;
+    line-height: 50px;
+}
+
+table, th, td{
+    border: 1px solid black;
+    font-size: 16px;
+}
+
+.contents{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.strong{
+    font-weight: bold;
+    color: red;
+}
+
+.btn_area{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.btn{
+    display: block;
+    height: 50px;
+    width: 200px;
+    margin: 0 20px;
+    color: white;
+    border: palevioletred;
+    border-radius: 10px;
+    background-color:salmon;
+}
+
+.btn:hover{
+    background-color:lightsalmon;
+}
+
+.footer_area{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 60px;
+}
