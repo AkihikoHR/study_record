@@ -29,6 +29,7 @@ $user_name = $_SESSION['user_name'];
       <button class="btn" onclick="location.href='message.php'"> 担任からのメッセージ </button>
       <button class="btn" onclick="location.href='time_input.php'"> 学習時間の記録 </button>
       <button class="btn" onclick="location.href='record_input.php'">成績の記録</button>
+      <button class="btn" onclick="location.href='question.php'"> 質問部屋 </button>
     </div>
 
     <div class="footer_area">

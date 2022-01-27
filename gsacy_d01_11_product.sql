@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2022-01-14 16:26:12
+-- 生成日時: 2022-01-27 15:33:15
 -- サーバのバージョン： 10.4.22-MariaDB
 -- PHP のバージョン: 8.0.13
 
@@ -20,6 +20,61 @@ SET time_zone = "+00:00";
 --
 -- データベース: `gsacy_d01_11_product`
 --
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `answer_table`
+--
+
+CREATE TABLE `answer_table` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `question_id` int(11) NOT NULL,
+  `answer` varchar(128) COLLATE utf8mb4_bin NOT NULL,
+  `image` varchar(128) COLLATE utf8mb4_bin DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- テーブルのデータのダンプ `answer_table`
+--
+
+INSERT INTO `answer_table` (`id`, `user_id`, `question_id`, `answer`, `image`, `created_at`, `updated_at`) VALUES
+(1, 13, 7, 'aaaa', NULL, '2022-01-27 23:22:02', '2022-01-27 23:22:02'),
+(2, 13, 7, 'aaaaa', NULL, '2022-01-27 23:25:12', '2022-01-27 23:25:12'),
+(3, 13, 7, 'bbbbb', NULL, '2022-01-27 23:27:55', '2022-01-27 23:27:55');
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `question_table`
+--
+
+CREATE TABLE `question_table` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `category` varchar(128) COLLATE utf8mb4_bin NOT NULL,
+  `question` varchar(128) COLLATE utf8mb4_bin NOT NULL,
+  `image` varchar(128) COLLATE utf8mb4_bin DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- テーブルのデータのダンプ `question_table`
+--
+
+INSERT INTO `question_table` (`id`, `user_id`, `category`, `question`, `image`, `created_at`, `updated_at`) VALUES
+(1, 12, '勉強', 'サンプル', NULL, '2022-01-26 16:56:48', '2022-01-26 16:56:48'),
+(2, 12, '勉強', 'aaaaaa', NULL, '2022-01-26 17:14:59', '2022-01-26 17:14:59'),
+(3, 12, '勉強', 'サンプル', 'upload/20220126092205941c1300eb5764138674a5355003ee86.jpg', '2022-01-26 17:22:05', '2022-01-26 17:22:05'),
+(4, 12, '志望校選び', 'A大学のB学部の雰囲気を知りたいです。入学後の授業、単位取得は厳しいでしょうか？\r\n学生はサークルや部活などに加入していますか？', 'upload/20220126180717ba406208b192a6ee0eafe1cc7a60cad9.jpg', '2022-01-27 02:07:17', '2022-01-27 02:07:17'),
+(5, 8, '勉強', 'aaaaaaaa', 'upload/20220126182023036dbdf3f644fef058d4fc7ef5aeaf8c.jpg', '2022-01-27 02:20:23', '2022-01-27 02:20:23'),
+(6, 13, '勉強', 'こんにちは', NULL, '2022-01-27 22:02:07', '2022-01-27 22:02:07'),
+(7, 13, '学校生活', 'これはテストです。これはテストです。これはテストです。これはテストです。これはテストです。これはテストです。これはテストです。これはテストです。これはテストです。', 'upload/20220127140238019f535728ab481bdaac42f93e84f701.jpg', '2022-01-27 22:02:38', '2022-01-27 22:02:38'),
+(8, 13, '勉強', 'テスト', NULL, '2022-01-27 22:12:15', '2022-01-27 22:12:15');
 
 -- --------------------------------------------------------
 
@@ -58,8 +113,10 @@ INSERT INTO `record_table` (`id`, `user_id`, `exam_type`, `exam_date`, `japanese
 (10, 11, '１学期期末', '2022-01-05', 80, 80, 80, 80, 80, '2022-01-08 01:30:49', '2022-01-08 01:30:49'),
 (12, 12, '学年末', '2022-01-10', 20, 20, 20, 20, 20, '2022-01-14 15:13:54', '2022-01-14 15:13:54'),
 (13, 12, '１学期期末', '2021-11-15', 90, 90, 90, 90, 90, '2022-01-14 18:28:11', '2022-01-14 18:28:11'),
-(14, 12, '１学期中間', '2021-06-16', 60, 70, 80, 90, 100, '2022-01-14 20:15:54', '2022-01-14 20:15:54'),
-(15, 12, '２学期中間', '2021-07-15', 70, 80, 60, 90, 85, '2022-01-14 20:16:13', '2022-01-14 20:16:13');
+(15, 12, '２学期中間', '2021-07-15', 70, 80, 60, 90, 85, '2022-01-14 20:16:13', '2022-01-14 20:16:13'),
+(16, 12, '２学期中間', '2021-09-21', 30, 40, 20, 80, 40, '2022-01-15 12:35:37', '2022-01-15 12:35:37'),
+(17, 12, '学年末', '2022-01-14', 90, 10, 80, 50, 40, '2022-01-15 13:20:56', '2022-01-15 13:20:56'),
+(18, 12, '学年末', '2022-01-19', 80, 80, 80, 80, 80, '2022-01-16 14:47:49', '2022-01-16 14:47:49');
 
 -- --------------------------------------------------------
 
@@ -85,10 +142,11 @@ CREATE TABLE `time_table` (
 --
 
 INSERT INTO `time_table` (`id`, `user_id`, `date`, `japanese`, `math`, `english`, `science`, `social`, `created_at`, `updated_at`) VALUES
-(1, 12, '2022-01-14', 1, 1, 1, 1, 1, '2022-01-14 02:59:22', '2022-01-14 02:59:22'),
 (2, 12, '2022-01-12', 30, 30, 30, 30, 30, '2022-01-14 15:42:46', '2022-01-14 15:42:46'),
 (3, 12, '2022-01-10', 40, 40, 40, 40, 40, '2022-01-14 18:29:05', '2022-01-14 18:29:05'),
-(4, 12, '2022-01-01', 0, 10, 20, 30, 40, '2022-01-14 20:45:05', '2022-01-14 20:45:05');
+(4, 12, '2022-01-01', 0, 10, 20, 30, 40, '2022-01-14 20:45:05', '2022-01-14 20:45:05'),
+(5, 12, '2022-01-15', 30, 20, 0, 40, 20, '2022-01-15 12:36:47', '2022-01-15 12:36:47'),
+(6, 12, '2022-01-11', 10, 10, 20, 30, 30, '2022-01-15 13:21:41', '2022-01-15 13:21:41');
 
 -- --------------------------------------------------------
 
@@ -120,11 +178,24 @@ INSERT INTO `user_table` (`id`, `user_name`, `user_ruby`, `user_pw`, `user_age`,
 (9, '弘中更新２', '', '$2y$10$vlm2INnaMWyt.1QVKVyqJeY3SqrDU5UAQYPQtn0mf7lOCXp7QZhAa', 0, '', '', 0, 0, '2021-12-23 04:05:49', '2021-12-23 22:32:40'),
 (10, '弘中テスト10', 'ひろなかてすと10', '$2y$10$DFf55DUuhtzWvXJILDM3N.NuZk6VMzGtjoxAuCm4yAV19I6QZV/mu', 30, 'test10@example.com', 'テスト10', 0, 0, '2021-12-23 22:56:47', '2021-12-23 23:49:13'),
 (11, '弘中更新', 'テスト', '$2y$10$q.o.DUVxYSGNNsaYLjIpzufC94HUsb7TZP5d1JSSqlsUDhoj2mSRi', 18, 'test@example.com', 'aaa', 0, 0, '2022-01-08 00:49:53', '2022-01-08 01:14:35'),
-(12, '弘中テスト', 'aaa', '$2y$10$PSo.pIAsmCoFvIICEdctKeUHUN6dojdiPRZ.fiwrMSGfY0YRxpvbi', 18, 'test2@example.com', 'aaa', 0, 0, '2022-01-13 22:27:37', '2022-01-14 20:57:13');
+(12, '弘中テスト', 'aaa', '$2y$10$PSo.pIAsmCoFvIICEdctKeUHUN6dojdiPRZ.fiwrMSGfY0YRxpvbi', 18, 'test2@example.com', 'aaa', 0, 0, '2022-01-13 22:27:37', '2022-01-14 20:57:13'),
+(13, '弘中テスト1/27', 'ひろなか', '$2y$10$U/v37hQR/SzO.0g.pC5JJeK5EsAqYxAJTvrXidkAH3r.8Q5UMY/9.', 30, 'gs@example.com', 'テスト', 0, 0, '2022-01-27 22:01:39', '2022-01-27 22:01:39');
 
 --
 -- ダンプしたテーブルのインデックス
 --
+
+--
+-- テーブルのインデックス `answer_table`
+--
+ALTER TABLE `answer_table`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- テーブルのインデックス `question_table`
+--
+ALTER TABLE `question_table`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- テーブルのインデックス `record_table`
@@ -149,22 +220,34 @@ ALTER TABLE `user_table`
 --
 
 --
+-- テーブルの AUTO_INCREMENT `answer_table`
+--
+ALTER TABLE `answer_table`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- テーブルの AUTO_INCREMENT `question_table`
+--
+ALTER TABLE `question_table`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- テーブルの AUTO_INCREMENT `record_table`
 --
 ALTER TABLE `record_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- テーブルの AUTO_INCREMENT `time_table`
 --
 ALTER TABLE `time_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- テーブルの AUTO_INCREMENT `user_table`
 --
 ALTER TABLE `user_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
