@@ -21,7 +21,7 @@ $user_name = $_SESSION['user_name'];
 <body>
   <div class="wrapper">
 
-    <h2 class="user_name">こんにちは<?php echo $user_name; ?>さん</h2>
+    <h2>こんにちは<?php echo $user_name; ?>さん</h2>
 
     <h2>今日は何をしますか？</h2>
 

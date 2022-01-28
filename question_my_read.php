@@ -9,12 +9,17 @@ $user_name = $_SESSION['user_name'];
 // DB接続
 $pdo = connect_to_db();
 
-// SQL作成&実行
-$sql = 'SELECT * FROM question_table WHERE user_id=:user_id ORDER BY created_at ASC';
+//回答数を集計して表示
+$sql = "SELECT * FROM question_table LEFT OUTER JOIN 
+( SELECT question_id, COUNT(id) AS answer_count FROM answer_table GROUP BY question_id ) 
+AS result_table 
+ON question_table.id = result_table.question_id
+WHERE user_id=:user_id 
+ORDER BY created_at ASC";
+
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':user_id', $user_id);
 
-// SQL実行（実行に失敗すると `sql error ...` が出力される）
 try {
   $status = $stmt->execute();
 } catch (PDOException $e) {
@@ -22,15 +27,25 @@ try {
   exit();
 }
 
+
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $output = "";
 foreach ($result as $record) {
+
+  if ($record["answer_count"] == NULL) {
+    $answer_count = 0;
+    $answer_link = "";
+  } else {
+    $answer_count = $record["answer_count"];
+    $answer_link = "<a href='answer_read.php?id={$record["id"]}'>";
+  }
+
   $output .= "
   <tr>
     <td>{$record["category"]}</td>
     <td>{$record["question"]}</td>
     <td><img src='{$record["image"]}' height='150px'></td>
-    <td>0件</td>
+    <td>$answer_link{$answer_count}件</a></td>
   </tr>
   ";
 }
@@ -60,10 +75,10 @@ foreach ($result as $record) {
         <table>
           <thead>
             <tr>
-              <th>カテゴリー</th>
-              <th>内容</th>
-              <th>添付画像</th>
-              <th>回答</th>
+              <th width="10%">カテゴリー</th>
+              <th width="60%">内容</th>
+              <th width="20%">添付画像</th>
+              <th width="10%">回答</th>
             </tr>
           </thead>
           <tbody>
@@ -75,6 +90,8 @@ foreach ($result as $record) {
 
       <a href="question_input.php">質問の入力画面に戻る</a>
     </fieldset>
+
+    <div><a href="question.php">質問部屋トップへ</a></div>
 
   </div>
 

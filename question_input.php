@@ -51,7 +51,11 @@ $user_name = $_SESSION['user_name'];
       </fieldset>
     </form>
 
-    <div><a href="question_my_read.php">過去の自分の質問を見る</a></div>
+    <div class="btn_area">
+      <button class="btn" onclick="location.href='question_my_read.php'"> 過去の質問と回答を見る </button>
+    </div>
+
+    <div><a href="question.php">質問部屋トップへ</a></div>
     <div><a href="top.php">ホームへ</a></div>
   </div>
 </body>

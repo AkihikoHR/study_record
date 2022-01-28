@@ -88,6 +88,8 @@ $output = "
       </fieldset>
     </form>
 
+    <div><a href="question.php">質問部屋トップへ</a></div>
+
     <div><a href="top.php">ホームへ</a></div>
   </div>
 </body>
