@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2022-01-27 15:33:15
+-- 生成日時: 2022-01-29 05:18:39
 -- サーバのバージョン： 10.4.22-MariaDB
 -- PHP のバージョン: 8.0.13
 
@@ -44,7 +44,12 @@ CREATE TABLE `answer_table` (
 INSERT INTO `answer_table` (`id`, `user_id`, `question_id`, `answer`, `image`, `created_at`, `updated_at`) VALUES
 (1, 13, 7, 'aaaa', NULL, '2022-01-27 23:22:02', '2022-01-27 23:22:02'),
 (2, 13, 7, 'aaaaa', NULL, '2022-01-27 23:25:12', '2022-01-27 23:25:12'),
-(3, 13, 7, 'bbbbb', NULL, '2022-01-27 23:27:55', '2022-01-27 23:27:55');
+(3, 13, 7, 'bbbbb', NULL, '2022-01-27 23:27:55', '2022-01-27 23:27:55'),
+(4, 13, 7, 'テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト', 'upload/20220128094157657eb899f2f378bdb4aa1e1b743e7bd5.jpg', '2022-01-28 17:41:57', '2022-01-28 17:41:57'),
+(5, 13, 4, 'これはテストです。', NULL, '2022-01-29 02:32:41', '2022-01-29 02:32:41'),
+(6, 15, 11, '回答します。', 'upload/20220128184126b2a10223f289d79216544e4ffe94a016.jpg', '2022-01-29 02:41:26', '2022-01-29 02:41:26'),
+(7, 14, 12, '良いですよ。', 'upload/20220129042652bca1338e478e305963a15f0f39b0624f.jpg', '2022-01-29 12:26:52', '2022-01-29 12:26:52'),
+(8, 14, 13, 'サンプル', 'upload/20220129051431698ab805f201a807fe98d5b0895eb60e.jpg', '2022-01-29 13:14:31', '2022-01-29 13:14:31');
 
 -- --------------------------------------------------------
 
@@ -74,7 +79,12 @@ INSERT INTO `question_table` (`id`, `user_id`, `category`, `question`, `image`, 
 (5, 8, '勉強', 'aaaaaaaa', 'upload/20220126182023036dbdf3f644fef058d4fc7ef5aeaf8c.jpg', '2022-01-27 02:20:23', '2022-01-27 02:20:23'),
 (6, 13, '勉強', 'こんにちは', NULL, '2022-01-27 22:02:07', '2022-01-27 22:02:07'),
 (7, 13, '学校生活', 'これはテストです。これはテストです。これはテストです。これはテストです。これはテストです。これはテストです。これはテストです。これはテストです。これはテストです。', 'upload/20220127140238019f535728ab481bdaac42f93e84f701.jpg', '2022-01-27 22:02:38', '2022-01-27 22:02:38'),
-(8, 13, '勉強', 'テスト', NULL, '2022-01-27 22:12:15', '2022-01-27 22:12:15');
+(8, 13, '勉強', 'テスト', NULL, '2022-01-27 22:12:15', '2022-01-27 22:12:15'),
+(9, 11, '勉強', 'テストテスト', 'upload/20220128085207b0dff295e043f4e0c6efe666544c59d9.jpg', '2022-01-28 16:52:07', '2022-01-28 16:52:07'),
+(10, 13, '学校生活', '教えてください', 'upload/20220128173836666f31c64fd3413fe1bc344d7e3089f2.jpg', '2022-01-29 01:38:37', '2022-01-29 01:38:37'),
+(11, 14, '勉強', '質問です。回答お願いします。', 'upload/2022012818383447277c21b42bb1a0a4950298b527b7c5.jpg', '2022-01-29 02:38:34', '2022-01-29 02:38:34'),
+(12, 14, '志望校選び', 'こちらの大学はどうですか？', 'upload/2022012904253800baaa1407811046f06a3c164fc3708e.jpg', '2022-01-29 12:25:38', '2022-01-29 12:25:38'),
+(13, 14, '勉強', 'ここを教えてください。', 'upload/20220129051321b20f8110073b053ab57a2888e965ff8a.jpg', '2022-01-29 13:13:21', '2022-01-29 13:13:21');
 
 -- --------------------------------------------------------
 
@@ -179,7 +189,9 @@ INSERT INTO `user_table` (`id`, `user_name`, `user_ruby`, `user_pw`, `user_age`,
 (10, '弘中テスト10', 'ひろなかてすと10', '$2y$10$DFf55DUuhtzWvXJILDM3N.NuZk6VMzGtjoxAuCm4yAV19I6QZV/mu', 30, 'test10@example.com', 'テスト10', 0, 0, '2021-12-23 22:56:47', '2021-12-23 23:49:13'),
 (11, '弘中更新', 'テスト', '$2y$10$q.o.DUVxYSGNNsaYLjIpzufC94HUsb7TZP5d1JSSqlsUDhoj2mSRi', 18, 'test@example.com', 'aaa', 0, 0, '2022-01-08 00:49:53', '2022-01-08 01:14:35'),
 (12, '弘中テスト', 'aaa', '$2y$10$PSo.pIAsmCoFvIICEdctKeUHUN6dojdiPRZ.fiwrMSGfY0YRxpvbi', 18, 'test2@example.com', 'aaa', 0, 0, '2022-01-13 22:27:37', '2022-01-14 20:57:13'),
-(13, '弘中テスト1/27', 'ひろなか', '$2y$10$U/v37hQR/SzO.0g.pC5JJeK5EsAqYxAJTvrXidkAH3r.8Q5UMY/9.', 30, 'gs@example.com', 'テスト', 0, 0, '2022-01-27 22:01:39', '2022-01-27 22:01:39');
+(13, '弘中テスト1/27', 'ひろなか', '$2y$10$U/v37hQR/SzO.0g.pC5JJeK5EsAqYxAJTvrXidkAH3r.8Q5UMY/9.', 30, 'gs@example.com', 'テスト', 0, 0, '2022-01-27 22:01:39', '2022-01-27 22:01:39'),
+(14, '質問者A', 'しつもんしゃえー', '$2y$10$xCCvkiIiFI004vSb5/GQMO8P9qELST9XQfujJnRIGYBBI7P9nbYFO', 18, 'question@example.com', 'テスト', 0, 0, '2022-01-29 02:37:48', '2022-01-29 02:40:28'),
+(15, '回答者A', 'かいとうしゃえー', '$2y$10$IxhgKOWH8wAB7vicBBgzKuNlFrkhPTD8cezEigONL0jU4IHOzd0yO', 20, 'answer@example.com', 'テスト', 0, 0, '2022-01-29 02:39:54', '2022-01-29 02:39:54');
 
 --
 -- ダンプしたテーブルのインデックス
@@ -223,13 +235,13 @@ ALTER TABLE `user_table`
 -- テーブルの AUTO_INCREMENT `answer_table`
 --
 ALTER TABLE `answer_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- テーブルの AUTO_INCREMENT `question_table`
 --
 ALTER TABLE `question_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- テーブルの AUTO_INCREMENT `record_table`
@@ -247,7 +259,7 @@ ALTER TABLE `time_table`
 -- テーブルの AUTO_INCREMENT `user_table`
 --
 ALTER TABLE `user_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
