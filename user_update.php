@@ -56,7 +56,7 @@ $_SESSION['user_name'] = $member['user_name'];
 <body>
     <div class="wrapper">
         <h1>ユーザー情報が変更されました</h1>
-        <a href="top.php">ホーム</a>
+        <a href="index.php">ホーム</a>
     </div>
 </body>
 

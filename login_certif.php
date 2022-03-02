@@ -23,7 +23,7 @@ if (password_verify($_POST['user_pw'], $member['user_pw'])) {
   $_SESSION['user_id'] = $member['id'];
   $_SESSION['user_name'] = $member['user_name'];
 
-  header('LOCATION:top.php');
+  header('LOCATION:index.php');
   exit();
 } else {
   $msg = 'ログイン情報に誤りがあります';

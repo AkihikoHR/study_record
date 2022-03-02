@@ -29,7 +29,7 @@ $user_name = $_SESSION['user_name'];
       <button class="btn" onclick="location.href='question_all_read.php'"> 全員の質問を見る </button>
     </div>
 
-    <div><a href="top.php">ホームへ</a></div>
+    <div><a href="index.php">ホームへ</a></div>
   </div>
 </body>
 

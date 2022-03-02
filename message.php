@@ -99,7 +99,7 @@ $worst_subject = array_search(min($array), $array);
 
         <p>苦手の<span class="strong"><?= $worst_subject; ?></span>の勉強もがんばりましょう！</p>
 
-        <div><a href="top.php">ホームへ</a></div>
+        <div><a href="index.php">ホームへ</a></div>
 
     </div>
 </body>

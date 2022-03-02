@@ -71,7 +71,7 @@ $user_address = $member['user_address'];
         <input type="submit" value="ユーザー情報更新">
       </fieldset>
     </form>
-    <div><a href="top.php">ホームへ</a></div>
+    <div><a href="index.php">ホームへ</a></div>
   </div>
 
 </body>

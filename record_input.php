@@ -58,7 +58,7 @@ $user_name = $_SESSION['user_name'];
       <button class="btn" onclick="location.href='record_read.php'">成績レポートはこちら</button>
     </div>
 
-    <div><a href="top.php">ホームへ</a></div>
+    <div><a href="index.php">ホームへ</a></div>
   </div>
 </body>
 

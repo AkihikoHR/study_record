@@ -2,9 +2,9 @@
 
 function connect_to_db()
 {
-    $dbn = 'mysql:dbname=gsacy_d01_11_product;charset=utf8mb4;port=3306;host=localhost';
-    $user = 'root';
-    $pwd = '';
+    $dbn = 'mysql:dbname=b3a31a8f2108ee2c67054fb56dfceaa0;charset=utf8mb4;port=3306;host=mysql-2.mc.lolipop.lan';
+    $user = 'b3a31a8f2108ee2c67054fb56dfceaa0';
+    $pwd = 'Urizenlp1223';
 
     try {
         return new PDO($dbn, $user, $pwd);
